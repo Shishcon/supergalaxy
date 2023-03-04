@@ -97,6 +97,10 @@
                 saveFile.data.releases = player.releases;
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
             },
+            reset:()=>{
+                window.localStorage.removeItem("saveData");
+                prestige();
+            },
             load:()=>{
                 if(window.localStorage.length == 0){
                     return;

@@ -9,6 +9,8 @@ force <behaviour> <times>
         behaviours: compression, release
         example: force compression 2 //forces compression 2 times
 
+sf reset
+#used to reset Save File, this cannot be reverted#
 
 !WARNING!
 usage of debug line is only for testing purposes and can break the game
