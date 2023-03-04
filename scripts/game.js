@@ -123,6 +123,7 @@
             }
             
         }
+        document.getElementById('saveBtn').onclick = saveFile.save;
 
         function incrementFormula(dim){
 
@@ -305,6 +306,6 @@
         compressionModule.init();
         releaseModule.init();
        
-
+        saveFile.load();
         var interval = 40;
         var timer = setInterval(income,interval);
