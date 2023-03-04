@@ -11,7 +11,7 @@
 
 
 importModule("scripts/game.js");
-
+importModule("scripts/modules/debug.js");
 
 
 function importModule(url) {
