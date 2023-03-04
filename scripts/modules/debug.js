@@ -40,6 +40,9 @@ function getDebugCommand(){
             }
         }
     }
+    else if(command[0] == "help"){
+        window.open("debuggerHelp.txt", '_blank').focus();
+    }
 
 
 

@@ -1,0 +1,15 @@
+USAGE:
+add <currency> <amount> <times of ten>
+#used to add currency#
+        currencies: DM
+        example: add DM 2 10 //adds 2e10 DM
+
+force <behaviour> <times>
+#used to force prestige behaviours#
+        behaviours: compression, release
+        example: force compression 2 //forces compression 2 times
+
+
+!WARNING!
+usage of debug line is only for testing purposes and can break the game
+!END!
