@@ -96,6 +96,7 @@
                 saveFile.data.compressions = player.compressions;
                 saveFile.data.releases = player.releases;
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
+                showNotification("Game Saved!")
             },
             reset:()=>{
                 window.localStorage.removeItem("saveData");

@@ -11,7 +11,8 @@ function getDebugCommand(){
             if(Number(command[2]) > 0){
                 if(Number(command[3]) > 0){
                     console.log(Number(command[2]) + "e" + Number(command[3]))
-                    player.dm += Number(command[2]) * Math.pow(Number(command[3]),10);
+                    player.dm += Number(command[2]) * Math.pow(10, Number(command[3]));
+                    showNotification("added "+Number(command[2]) + "e" + Number(command[3])+" DM");
                     return;
                 }
                 
@@ -29,6 +30,7 @@ function getDebugCommand(){
                     player.dm = compressionModule.getCost();
                     compressionModule.use();
                 }
+                showNotification("forced compression "+Number(command[2])+" times")
             }
         }
         else if(command[1] == "release"){
@@ -36,7 +38,9 @@ function getDebugCommand(){
                 for(i=0;i<Number(command[2]);i++){
                     player.dm = releaseModule.getCost();
                     releaseModule.use();
+                   
                 }
+                showNotification("forced release "+Number(command[2])+" times")
             }
         }
     }
@@ -46,6 +50,7 @@ function getDebugCommand(){
     else if(command[0] == "sf"){
         if(command[1] == "reset"){
            saveFile.reset();
+           showNotification("Progress wiped")
         }
     }
 

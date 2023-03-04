@@ -221,4 +221,19 @@
             }
 
 
-        
+.notification{
+
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    width: 300px;
+    height: 48px;
+    line-height: 24px;
+    padding: 5px;
+    background-color: #000000EE;
+    text-align: left;
+    color: white;
+    border: 1px solid lime;
+    z-index: 2000;
+}      
