@@ -5,10 +5,175 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p id="text"></p>
-    <script src="test.js"></script>
+    <p>You have <span id="cashCount">10</span> dadidulson's matter</p>
+    <p style="font-size: 14px;">You are getting <span id="cashIncome">10</span> DM/s</p>
+
+    <marquee style="background-color: #444;">
+    kylefromaccountingdim (24yo) - has an affair with mamidim. Dadidim are angy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+    Welcome to the Dadiverse, where everything has a Daddykink&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;           
+    </marquee>
+
+    <div class="dimBlock dbSec">
+        <div class="dimName">Tickspeed</div>
+        <div id="countTs" class="dimCount">0x</div>
+        <div id="buyTs" class="btn tsBuy dimBtn">1e3DM</div>
+        <div id="barTs" class="dimBar">Buy Max</div>
+
+    </div>
+
+    <div class="dimBlock">
+        <div class="dimName">1st DadiDim </div>
+        <div id="countD1" class="dimCount">0x</div>
+        <div id="buyD1" class="btn dimBtn">10DM</div>
+        <div id="barD1" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock dbSec">
+        <div class="dimName">2nd DadiDim </div>
+        <div id="countD2" class="dimCount">0x</div>
+        <div id="buyD2" class="btn dimBtn">10DM</div>
+        <div id="barD2" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock">
+        <div class="dimName">3rd DadiDim </div>
+        <div id="countD3" class="dimCount">0x</div>
+        <div id="buyD3" class="btn dimBtn">10DM</div>
+        <div id="barD3" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock dbSec">
+        <div class="dimName">4th DadiDim </div>
+        <div id="countD4" class="dimCount">0x</div>
+        <div id="buyD4" class="btn dimBtn">10DM</div>
+        <div id="barD4" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock">
+        <div class="dimName">5th DadiDim </div>
+        <div id="countD5" class="dimCount">0x</div>
+        <div id="buyD5" class="btn dimBtn">10DM</div>
+        <div id="barD5" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock dbSec">
+        <div class="dimName">6th DadiDim </div>
+        <div id="countD6" class="dimCount">0x</div>
+        <div id="buyD6" class="btn dimBtn">10DM</div>
+        <div id="barD6" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock">
+        <div class="dimName">7th DadiDim </div>
+        <div id="countD7" class="dimCount">0x</div>
+        <div id="buyD7" class="btn dimBtn">10DM</div>
+        <div id="barD7" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
+    <div class="dimBlock dbSec">
+        <div class="dimName">8th DadiDim </div>
+        <div id="countD8" class="dimCount">0x</div>
+        <div id="buyD8" class="btn dimBtn">10DM</div>
+        <div id="barD8" class="dimBar">
+            <span class="buy10Bar"></span>
+            <span class="buy10BarBought"></span>
+        </div>
+
+    </div>
+
     
+    <br>
+    <div id="compBlock" class="dimBlock compInactive" title="Compress your DM to make your tickspeed upgrades stronger (0.050x more per compression).">
+        <span>Compress</span>
+        <span id="countComp">0</span>
+        <span id="buyComp" class="btn prestigeBuy">10e10 DM</span>
+
+    </div>
+    <br>
+    <div id="relBlock" class="dimBlock relInactive" title="Release and decompres your DM free, so they can come back to you with more power (2x multiplier to all dims)">
+        <span>Release</span>
+        <span id="countRel">0</span>
+        <span id="buyRel" class="btn prestigeBuy">10e30 DM</span>
+
+    </div>
+
+    
+    <div id="mamiBlock" title="This bar shows how much DM you need to generate a Mami Point">
+        <span id="mamiBar" class="buy10Bar" style="background-color: orange;"></span>
+        <span id="mamiPercentage">0%</span>
+    </div>
+
+    <div id="gmModule">
+        <div id="gmTitle">Galaxy Module</div>
+        <div id="mpCount">You have 0 MP</div>
+        <div id="mpContainer"></div>
+        <div id="containerCapCount" class="mpRepeatableCount">MP Tank Capacity<br>1e3 MP</div>
+        <div id="containerCapUpgrade" class="mpRepeatableUpgrade">1 MP</div>
+        <div id="mpMultiplierCount" class="mpRepeatableCount">MP multiplier<br>x1</div>
+        <div id="mpMultiplierUpgrade" class="mpRepeatableUpgrade">100 MP</div>
+        <div id="galcticBoostCount" class="mpRepeatableCount">Galactic Boost<br>x1</div>
+        <div id="galcticBoostUpgrade" class="mpRepeatableUpgrade">1e200 MP</div>
+        <div id="mpDimUnlock">Unlock MamiDim<br>2e9 MP</div>
+        <div id="mpUpgradeContainer">
+            <div class="mpUpgradeBox">
+                Make your base Tickspeed multiplier stronger (+0.025x)<br>
+                1 MP
+            </div>
+            <div class="mpUpgradeBox">
+                Make your base Tickspeed multiplier stronger (+0.025x)<br>
+                5 MP
+            </div>
+            <div class="mpUpgradeBox">
+                Make your base Tickspeed multiplier stronger (+0.025x)<br>
+                5 MP
+            </div>
+            <div class="mpUpgradeBox">
+                Make your base Tickspeed multiplier stronger (+0.025x)<br>
+                5 MP
+            </div>
+            <div class="mpUpgradeBox">
+                Make your base Tickspeed multiplier stronger (+0.025x)<br>
+                5 MP
+            </div>
+
+        </div>
+        
+    </div>
+    
+    
+    <script src="scripts/main.js"></script>
+
+
 </body>
 </html>
