@@ -98,6 +98,10 @@
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
             },
             load:()=>{
+                if(window.localStorage.length == 0){
+                    return;
+                }
+
                 saveFile.data = JSON.parse(window.localStorage.getItem("saveData"));
 
                 
