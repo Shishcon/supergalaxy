@@ -98,12 +98,23 @@
 
         .dimName { 
             grid-area: 1 / 1 / 3 / 2; 
-            line-height: 50px;
+            line-height: 25px;
+            min-width: 120px;
+        }
+        .dimMulti { 
+            grid-area: 2 / 1 / 3 / 2; 
+            line-height: 25px;
+            font-size: 14px;
+            color: #ccc;
         }
         .dimCount { 
             grid-area: 1 / 2 / 3 / 3; 
             line-height: 50px;}
-        .dimBtn { grid-area: 1 / 3 / 2 / 4; }
+        .dimBtn { 
+            grid-area: 1 / 3 / 2 / 4; 
+            max-width: 300px;
+            min-width: 120px;
+        }
         .dimBar { 
             grid-area: 2 / 3 / 3 / 4; 
             border-color: lime;
@@ -112,6 +123,8 @@
             border-radius: 0 0 5px 5px;
             background-color: #111;
             overflow: hidden;
+            max-width: 302px;
+            min-width: 122px;
         }
         .buy10Bar{
             display: block;

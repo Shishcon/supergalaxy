@@ -41,6 +41,7 @@
             updateDimInfo : (dim) => {
                 document.getElementById('buyD'+(dim+1)).innerHTML = scientificNote(player.getDimCost(dim))+" DM";
                 document.getElementById('countD'+(dim+1)).innerHTML = scientificNote(player.dims[dim])+"x";
+                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10)));
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10BarBought')[0].style.width = (player.dimsBought[dim]%10)*10+'%';
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10Bar')[0].style.width = 
                 Math.min(10,Math.floor(((player.dimsBought[dim]%10))+(player.dm/player.getDimCost(dim))))*10+'%';
@@ -293,10 +294,11 @@
 
         function updateTs(){
             document.getElementById('buyTs').innerHTML = scientificNote(Math.pow(10,3) * Math.pow(10, player.ts));
+            document.getElementById('multiTs').innerHTML = "Bought " + player.ts + " times";
                 if(calculateTs() < Math.pow(10, 3)){
-                    document.getElementById('countTs').innerHTML = calculateTs().toFixed(3)+" tick/sec";
+                    document.getElementById('countTs').innerHTML = calculateTs().toFixed(3)+"<br> tick/sec";
                 }else{
-                document.getElementById('countTs').innerHTML = scientificNote(calculateTs())+" tick/sec";
+                document.getElementById('countTs').innerHTML = scientificNote(calculateTs())+"<br> tick/sec";
                 }
             player.updateDimInfo(7);
         }

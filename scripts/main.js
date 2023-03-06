@@ -1,6 +1,6 @@
 //Package Manager
 
-var version = 1;
+var version = 2;
 
 
  //Compression
