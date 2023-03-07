@@ -125,29 +125,32 @@
             overflow: hidden;
             max-width: 302px;
             min-width: 122px;
+            cursor: pointer;
+        }
+        .dimBar span{
+            position: relative;
+            display: block;
+            height: 100%;
+            z-index: 15;
         }
         .buy10Bar{
-            display: block;
             background-color: seagreen;
-            height: 100%;
             width: 0;
-            position: relative;
-            z-index: 5;
+            z-index: 5 !important;
+            top: -100%;
         }
         .buy10BarBought{
-            display: block;
             background-color: limegreen;;
             height: 100%;
             width: 0;
-            position: relative;
-            z-index: 10;
-            top: -100%;
+            z-index: 10 !important;
+            top: -200%;
         }
         #barTs{
             cursor: pointer;
         }
 
-        .dimBtn:hover, #barTs:hover{
+        .dimBtn:hover, .dimBar:hover, #barTs:hover{
             filter: hue-rotate(30deg);
         }
 
@@ -250,3 +253,24 @@
     border: 1px solid lime;
     z-index: 2000;
 }      
+
+#btnMax{
+    
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 5px;
+    color:white;
+    border: 1px lime solid;
+    cursor: pointer;
+    width: 120px;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    
+    
+}
+
+#btnMax:active{
+    background-color: lime;
+    
+}

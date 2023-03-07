@@ -36,8 +36,13 @@
                     player.buyDim(dim);
                 }
                 player.updateDimInfo(dim);
+                return true;
                 }
             },
+            bulkBuyDim : (dim) => {
+                while(player.buyDim(dim));
+            },
+
             updateDimInfo : (dim) => {
                 document.getElementById('buyD'+(dim+1)).innerHTML = scientificNote(player.getDimCost(dim))+" DM";
                 document.getElementById('countD'+(dim+1)).innerHTML = scientificNote(player.dims[dim])+"x";
@@ -168,9 +173,13 @@
             player.dm += incrementFormula(0);
             document.getElementById('cashCount').innerHTML = scientificNote(player.dm);
 
+            
+            
+            buyAll();
             checkAvilability();
             checkMamiPercentage();
 
+            
             player.actualTime = Date.now();
         }
 
@@ -243,6 +252,18 @@
             block.classList.add("cantBuy");
         }
 
+        function buyAll(){
+            if(!ifBuyAll){
+                return;
+            }
+            buyTs(true);
+            for(i=player.dims.length-1;i>=0;i--){
+                player.bulkBuyDim(i);
+                
+            }
+            
+        }
+
         for(i=0;i<player.dims.length;i++){
             document.getElementById('buyD'+(i+1)).innerHTML = scientificNote(player.getDimCost(i))+" DM";
         }
@@ -256,6 +277,19 @@
         document.getElementById('buyD6').onclick = function(){player.buyDim(5)};
         document.getElementById('buyD7').onclick = function(){player.buyDim(6)};
         document.getElementById('buyD8').onclick = function(){player.buyDim(7)};
+
+        document.getElementById('barD1').onclick = function(){player.bulkBuyDim(0)};
+        document.getElementById('barD2').onclick = function(){player.bulkBuyDim(1)};
+        document.getElementById('barD3').onclick = function(){player.bulkBuyDim(2)};
+        document.getElementById('barD4').onclick = function(){player.bulkBuyDim(3)};
+        document.getElementById('barD5').onclick = function(){player.bulkBuyDim(4)};
+        document.getElementById('barD6').onclick = function(){player.bulkBuyDim(5)};
+        document.getElementById('barD7').onclick = function(){player.bulkBuyDim(6)};
+        document.getElementById('barD8').onclick = function(){player.bulkBuyDim(7)};
+
+        var ifBuyAll = false;
+        document.getElementById('btnMax').onmousedown = function(){ifBuyAll = true;};
+        document.getElementById('btnMax').onmouseup = function(){ifBuyAll = false;};
 
         //TS upgrades
         document.getElementById('buyTs').onclick = function(){buyTs()};
