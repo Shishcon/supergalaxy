@@ -288,8 +288,10 @@
         document.getElementById('barD8').onclick = function(){player.bulkBuyDim(7)};
 
         var ifBuyAll = false;
-        document.getElementById('btnMax').onmousedown = function(){ifBuyAll = true;};
-        document.getElementById('btnMax').onmouseup = function(){ifBuyAll = false;};
+        document.getElementById('btnMax').onpointerdown = function(){ifBuyAll = true;};
+        //document.getElementById('btnMax').ontouchstart = function(e){ifBuyAll = true;e.preventDefault()};
+        document.getElementById('btnMax').onpointerup = function(){ifBuyAll = false;};
+        //document.getElementById('btnMax').ontouchend = function(e){ifBuyAll = false;e.preventDefault()};
 
         //TS upgrades
         document.getElementById('buyTs').onclick = function(){buyTs()};
