@@ -58,7 +58,7 @@
                     document.getElementById('countD'+(dim+1)).innerHTML = "Infinite";
                 }
                 
-                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10)));
+                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10))*Math.pow(2,Math.floor(player.releases)));
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10BarBought')[0].style.width = (player.dimsBought[dim]%10)*10+'%';
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10Bar')[0].style.width = 
                 Math.min(10,Math.floor(((player.dimsBought[dim]%10))+(player.dm/player.getDimCost(dim))))*10+'%';

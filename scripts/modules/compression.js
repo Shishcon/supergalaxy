@@ -8,7 +8,7 @@
             },
             update : () => {
                 if(compressionModule.getCost() != Infinity){
-                    document.getElementById('compressCost').innerHTML = scientificNote(compressionModule.getCost())+"DM";
+                    document.getElementById('compressCost').innerHTML = scientificNote(compressionModule.getCost())+" DM";
                 }else{
                     document.getElementById('compressCost').innerHTML = "Infinity";
                 }

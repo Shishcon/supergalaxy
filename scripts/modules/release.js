@@ -8,7 +8,7 @@ var releaseModule = {
     },
     update : () => {   
         if(releaseModule.getCost() != Infinity){
-            document.getElementById('releaseCost').innerHTML = scientificNote(releaseModule.getCost())+"DM";
+            document.getElementById('releaseCost').innerHTML = scientificNote(releaseModule.getCost())+" DM";
         }else{
             document.getElementById('releaseCost').innerHTML = "Infinity";
         }
