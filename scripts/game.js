@@ -28,7 +28,7 @@
             
             },
             buyDim : (dim) => {
-                if(player.dm >= player.getDimCost(dim)){
+                if(player.dm >= player.getDimCost(dim) && player.getDimCost(dim) != Infinity){
                 player.dm -=  player.getDimCost(dim);
                 player.dims[dim]++;
                 player.dimsBought[dim]++;
@@ -44,8 +44,20 @@
             },
 
             updateDimInfo : (dim) => {
-                document.getElementById('buyD'+(dim+1)).innerHTML = scientificNote(player.getDimCost(dim))+" DM";
-                document.getElementById('countD'+(dim+1)).innerHTML = scientificNote(player.dims[dim])+"x";
+                if(player.getDimCost(dim) != Infinity){
+                    document.getElementById('buyD'+(dim+1)).innerHTML = scientificNote(player.getDimCost(dim))+" DM";
+                    
+                }else{
+                    document.getElementById('buyD'+(dim+1)).innerHTML = "Infinity";
+                    
+
+                }
+                if(player.dims[dim] != Infinity){
+                    document.getElementById('countD'+(dim+1)).innerHTML = scientificNote(player.dims[dim])+"x";
+                }else{
+                    document.getElementById('countD'+(dim+1)).innerHTML = "Infinite";
+                }
+                
                 document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10)));
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10BarBought')[0].style.width = (player.dimsBought[dim]%10)*10+'%';
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10Bar')[0].style.width = 
@@ -197,7 +209,7 @@
 
         function checkAvilability(){
             //ts
-            if(player.dm >= Math.pow(10,3) * Math.pow(10, player.ts)){
+            if(player.dm >= Math.pow(10,3) * Math.pow(10, player.ts)  && Math.pow(10,3) * Math.pow(10, player.ts) != Infinity){
                 showBuyable(document.getElementById('buyTs'));
                 document.getElementById('barTs').style.borderColor = "magenta";
                 document.getElementById('barTs').style.backgroundColor = "purple";
@@ -211,7 +223,7 @@
             //dims
             for(i=0;i<player.dims.length;i++){
                 let upgradeBtn = document.getElementById('buyD'+(i+1));
-                if(player.dm >= player.getDimCost(i)){
+                if(player.dm >= player.getDimCost(i) && player.getDimCost(i) != Infinity){
                     showBuyable(upgradeBtn);
                     document.getElementById('barD'+(i+1)).style.borderColor = "lime";
                     document.getElementById('barD'+(i+1)).style.color = "#FFF";
@@ -225,21 +237,21 @@
             //compression
             
             if(player.dm >= compressionModule.getCost()){
-                document.getElementById('compBlock').classList.remove("compInactive")
-                document.getElementById('compBlock').classList.add("compActive")
+                document.getElementById('compressBtn').classList.remove("relInactive")
+                document.getElementById('compressBtn').classList.add("compActive")
             }else{
-                document.getElementById('compBlock').classList.add("compInactive")
-                document.getElementById('compBlock').classList.remove("compActive")
+                document.getElementById('compressBtn').classList.add("relInactive")
+                document.getElementById('compressBtn').classList.remove("compActive")
             }
             
 
             //release
             if(player.dm >= releaseModule.getCost()){
-                document.getElementById('relBlock').classList.remove("relInactive")
-                document.getElementById('relBlock').classList.add("relActive")
+                document.getElementById('releaseBtn').classList.remove("relInactive")
+                document.getElementById('releaseBtn').classList.add("relActive")
             }else{
-                document.getElementById('relBlock').classList.add("relInactive")
-                document.getElementById('relBlock').classList.remove("relActive")
+                document.getElementById('releaseBtn').classList.add("relInactive")
+                document.getElementById('releaseBtn').classList.remove("relActive")
             }
 
         }
@@ -311,7 +323,7 @@
         function buyTs(max){
             if(max){
                 
-                while(player.dm >= Math.pow(10,3) * Math.pow(10, player.ts)){
+                while(player.dm >= Math.pow(10,3) * Math.pow(10, player.ts) && Math.pow(10,3) * Math.pow(10, player.ts) != Infinity){
                     player.dm -= Math.pow(10,3) * Math.pow(10, player.ts);
                     player.ts++;
                     
@@ -319,7 +331,7 @@
                 updateTs();
                 return;
             }
-            if(player.dm >= Math.pow(10,3) * Math.pow(10, player.ts)){
+            if(player.dm >= Math.pow(10,3) * Math.pow(10, player.ts) && Math.pow(10,3) * Math.pow(10, player.ts) != Infinity){
                 player.dm -= Math.pow(10,3) * Math.pow(10, player.ts);
                 player.ts++;
                 

@@ -1,5 +1,5 @@
         var compressionModule = {
-            baseCost : 24,
+            baseCost : 15,
             costIncrement : 15,
             benefitRatio : 0.02,
         
@@ -7,8 +7,9 @@
                 return Math.pow(10,compressionModule.baseCost) * Math.pow(10, player.compressions*compressionModule.costIncrement);
             },
             update : () => {
-                document.getElementById('buyComp').innerHTML = scientificNote(compressionModule.getCost());
-                document.getElementById('countComp').innerHTML = player.compressions+' (+'+(compressionModule.benefitRatio*player.compressions).toFixed(3)+'x)';
+                document.getElementById('compressCost').innerHTML = scientificNote(compressionModule.getCost())+"DM";
+                document.getElementById('compressCount').innerHTML = player.compressions;
+                document.getElementById('compressBoost').innerHTML = '(+'+(compressionModule.benefitRatio*player.compressions).toFixed(3)+'x)';
 
             },
             use : () => {
@@ -18,7 +19,7 @@
                 }
             },
             init : () => {
-                document.getElementById('buyComp').onclick = function(){compressionModule.use();};
+                document.getElementById('compressBtn').onclick = function(){compressionModule.use();};
                 compressionModule.update();
             }
         

@@ -7,8 +7,10 @@ var releaseModule = {
         return Math.pow(10,releaseModule.baseCost) * Math.pow(10, player.releases*releaseModule.costIncrement);
     },
     update : () => {   
-        document.getElementById('buyRel').innerHTML = scientificNote(releaseModule.getCost());
-        document.getElementById('countRel').innerHTML = player.releases+' ('+scientificNote((Math.pow(releaseModule.benefitRatio,player.releases)))+'x)';    
+        document.getElementById('releaseCost').innerHTML = scientificNote(releaseModule.getCost())+" DM";
+        document.getElementById('releaseCount').innerHTML = player.releases;//+' ('+scientificNote((Math.pow(releaseModule.benefitRatio,player.releases)))+'x)';    
+        document.getElementById('releaseBoost').innerHTML = ' ('+scientificNote((Math.pow(releaseModule.benefitRatio,player.releases)))+'x)';    
+
     },
     use : () => {
         if(player.dm >= releaseModule.getCost()){
@@ -19,7 +21,7 @@ var releaseModule = {
         }
     },
     init : () => {
-        document.getElementById('buyRel').onclick = function(){releaseModule.use();};
+        document.getElementById('releaseBtn').onclick = function(){releaseModule.use();};
         releaseModule.update();
     }
 

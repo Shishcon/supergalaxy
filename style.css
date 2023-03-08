@@ -51,35 +51,9 @@
             border-color: #777;
         }
 
-        .compInactive{
-            background-color: #282828;
-            color: lime;
-        }
+        
 
-        .compInactive #buyComp{
-            background-color: #111;
-            color: lime
-        }
-
-        .compActive{
-            background-color: lime;
-            color: black"
-        }
-
-        .relInactive{
-            background-color: #282828;
-            color: magenta;
-        }
-
-        .relInactive #buyRel{
-            background-color: #111;
-            color: magenta
-        }
-
-        .relActive{
-            background-color: magenta;
-            color: black"
-        }
+        
 
         #relBlock, #compBlock{
             box-sizing: border-box;
@@ -273,4 +247,95 @@
 #btnMax:active{
     background-color: lime;
     
+}
+
+.clear{
+    clear: both;
+}
+
+.prestigeContainer{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+    margin: 5px auto;
+    
+}
+
+.compressBlock{
+    border: 1px lime solid;
+    border-radius: 5px;
+    max-width: 300px;
+    min-width: 180px;
+    margin: 0 5px;
+    box-sizing: border-box;
+    height: 355px;
+}
+
+.compressTitle{
+    letter-spacing: 5px;
+    width: 100%;
+    background-color: lime;
+    line-height: 30px;
+}
+.compressIcon{
+
+    font-size: 60px;
+    line-height: 80px;
+    color: lime;
+    filter: drop-shadow(2px 4px 3px black);
+    border: 3px solid lime;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 5px auto 10px;
+}
+.compressDesc{
+    width: 90%;
+    text-align: justify;
+    margin: 2px auto 10px;
+    height: 115px;
+}
+.compressBtn{
+    border-radius: 5px;
+    width: 160px;
+    line-height: 25px;
+    margin: 2px auto;
+    border: 1px black solid;
+    cursor: pointer;
+}
+.compressCount{
+    line-height: 20px;
+}
+.compressCost{
+    background-color: black;
+    display: inline-block;
+    border-radius: 5px;
+    width: 100%;
+    line-height: 25px;
+}
+
+.relInactive{
+    background-color: #777;
+    border-color: #777;
+    color: black;
+}
+.relInactive span{
+    color: white;
+}
+.relActive{
+    background-color: magenta;
+    border-color: magenta;
+}
+
+.compActive{
+    background-color: lime;
+    border-color: lime;
+}
+
+.releaseBg{
+    background-color: magenta;
+}
+.releaseBor{
+    border-color: magenta;
 }

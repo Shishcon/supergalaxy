@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css?3">
+    <link rel="stylesheet" href="style.css?4">
 </head>
 <body>
     <p>You have <span id="cashCount">10</span> dadidulson's matter</p>
@@ -137,19 +137,44 @@
     </div>
 
     
-    <br>
-    <div id="compBlock" class="dimBlock compInactive" title="Compress your DM to make your tickspeed upgrades stronger (0.050x more per compression).">
-        <span>Compress</span>
-        <span id="countComp">0</span>
-        <span id="buyComp" class="btn prestigeBuy">10e10 DM</span>
+    
 
-    </div>
-    <br>
-    <div id="relBlock" class="dimBlock relInactive" title="Release and decompres your DM free, so they can come back to you with more power (2x multiplier to all dims)">
-        <span>Release</span>
-        <span id="countRel">0</span>
-        <span id="buyRel" class="btn prestigeBuy">10e30 DM</span>
+    <div class="prestigeContainer">
 
+        <div class="compressBlock">
+            <div>
+                <span class="buy10Bar">
+
+                </span>
+
+            </div>
+            <div class="compressTitle">COMPRESSION</div>
+            <div class="compressIcon">⤓</div>
+            <div class="compressDesc">Compress your DM to make your tickspeed upgrades stronger <br>
+                (0.020x more per compression).</div>
+            <div class="compressCount">Compressed <span id="compressCount" style="color:lime">0</span> times<br>
+                <span id="compressBoost" style="color:lime">(+0.000x)</span>
+            </div>
+            <div class="compressBtn" id="compressBtn">COMPRESS <br><span class="compressCost" id="compressCost">1.00e15DM</span></div>
+
+        </div>
+
+        <div class="compressBlock releaseBor">
+            <div>
+                <span class="buy10Bar">
+
+                </span>
+
+            </div>
+            <div class="compressTitle releaseBg">RELEASE</div>
+            <div class="compressIcon releaseBor" style="color: magenta">⤡</div>
+            <div class="compressDesc">Release and decompres your DM free, so they can come back to you with more power (2x multiplier to all dims)</div>
+            <div class="compressCount">Released <span id="releaseCount" style="color:magenta">0</span> times<br>
+                <span id="releaseBoost" style="color:magenta">(1x)</span>
+            </div>
+            <div class="compressBtn" id="releaseBtn">RELEASE <br><span class="compressCost" id="releaseCost">1.00e24 DM</span></div>
+
+        </div>
     </div>
 
     
@@ -201,7 +226,7 @@
     </span>
 </div>
     
-    <script src="scripts/main.js?6"></script>
+    <script src="scripts/main.js?7"></script>
 
 
 </body>
