@@ -166,7 +166,12 @@
             incrementation *= Math.pow(2,player.releases); //Release bonus
 
             if(dim == 0){ //Display income/sec
-                document.getElementById('cashIncome').innerHTML = scientificNote(incrementation);
+                if(player.dm != Infinity){
+                    document.getElementById('cashIncome').innerHTML = scientificNote(incrementation);
+                }else{
+                    document.getElementById('cashIncome').innerHTML = "Infinite";
+    
+                }
             }
 
             incrementation *= ((Date.now() - player.actualTime)/1000); //delta time
@@ -183,7 +188,12 @@
             }
             player.updateDimInfo(7);
             player.dm += incrementFormula(0);
-            document.getElementById('cashCount').innerHTML = scientificNote(player.dm);
+            if(player.dm != Infinity){
+                document.getElementById('cashCount').innerHTML = scientificNote(player.dm);
+            }else{
+                document.getElementById('cashCount').innerHTML = "Infinite";
+
+            }
 
             
             
@@ -236,7 +246,7 @@
 
             //compression
             
-            if(player.dm >= compressionModule.getCost()){
+            if(player.dm >= compressionModule.getCost() && compressionModule.getCost() != Infinity){
                 document.getElementById('compressBtn').classList.remove("relInactive")
                 document.getElementById('compressBtn').classList.add("compActive")
             }else{
@@ -246,7 +256,7 @@
             
 
             //release
-            if(player.dm >= releaseModule.getCost()){
+            if(player.dm >= releaseModule.getCost() && releaseModule.getCost() != Infinity){
                 document.getElementById('releaseBtn').classList.remove("relInactive")
                 document.getElementById('releaseBtn').classList.add("relActive")
             }else{
