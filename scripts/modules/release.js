@@ -13,7 +13,7 @@ var releaseModule = {
             document.getElementById('releaseCost').innerHTML = "Infinity";
         }
         document.getElementById('releaseCount').innerHTML = player.releases;//+' ('+scientificNote((Math.pow(releaseModule.benefitRatio,player.releases)))+'x)';    
-        document.getElementById('releaseBoost').innerHTML = ' ('+scientificNote((Math.pow(releaseModule.benefitRatio,player.releases)))+'x)';    
+        document.getElementById('releaseBoost').innerHTML = ' ('+scientificNote(releaseModule.getPower(),1)+'x)';    
 
     },
     use : () => {
@@ -23,6 +23,12 @@ var releaseModule = {
             prestige();
             
         }
+    },
+    getPower : () =>{
+        if(player.releases == 0){
+            return 1;
+        }
+        return Math.pow(releaseModule.benefitRatio,player.releases)*heavenModule.getPower();
     },
     init : () => {
         document.getElementById('releaseBtn').onclick = function(){releaseModule.use();};

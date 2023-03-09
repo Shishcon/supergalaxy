@@ -333,6 +333,11 @@
     border-color: lime;
 }
 
+.heavenActive{
+    background-color: orange;
+    border-color: orange;
+}
+
 .releaseBg{
     background-color: magenta;
 }

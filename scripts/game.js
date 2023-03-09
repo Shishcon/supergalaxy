@@ -1,7 +1,12 @@
- function scientificNote(liczba){
+ function scientificNote(liczba, precise){
            
             if(liczba<1000){
-                return Math.floor(liczba);
+                if(precise){
+                    return liczba.toFixed(precise);
+                }else{
+                    return Math.floor(liczba);
+                }
+                
             }
             let exponent = Math.floor(Math.log10(liczba));
             
@@ -58,7 +63,7 @@
                     document.getElementById('countD'+(dim+1)).innerHTML = "Infinite";
                 }
                 
-                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10))*Math.pow(2,Math.floor(player.releases)));
+                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10))*releaseModule.getPower()*heavenModule.getPower(),1);
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10BarBought')[0].style.width = (player.dimsBought[dim]%10)*10+'%';
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10Bar')[0].style.width = 
                 Math.min(10,Math.floor(((player.dimsBought[dim]%10))+(player.dm/player.getDimCost(dim))))*10+'%';
@@ -113,6 +118,7 @@
                 saveFile.data.dimsBought = player.dimsBought;
                 saveFile.data.compressions = player.compressions;
                 saveFile.data.releases = player.releases;
+                saveFile.data.mp = player.mp;
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
                 showNotification("Game Saved!")
             },
@@ -127,21 +133,46 @@
 
                 saveFile.data = JSON.parse(window.localStorage.getItem("saveData"));
 
-                
-                player.dm = saveFile.data.dm;
-                player.ts = saveFile.data.ts;
-                player.dims = saveFile.data.dims;
-                player.dimsBought = saveFile.data.dimsBought;
-                player.compressions = saveFile.data.compressions;
-                player.releases = saveFile.data.releases;
+                player.dm = 10;
+                player.ts = 0;
+                player.dims = [0,0,0,0,0,0,0,0];
+                player.dimsBought = [0,0,0,0,0,0,0,0];
+                player.compressions = 0;
+                player.releases = 0;
+                player.mp = 0;
 
+                if(saveFile.data.dm){
+                    player.dm = saveFile.data.dm;
+                }
+                if(saveFile.data.ts){
+                    player.ts = saveFile.data.ts;
+                }
+                if(saveFile.data.dims){
+                    player.dims = saveFile.data.dims;
+                }
+                if(saveFile.data.dimsBought){
+                    player.dimsBought = saveFile.data.dimsBought;
+                }
+                if(saveFile.data.compressions){
+                    player.compressions = saveFile.data.compressions;
+                }
+                if(saveFile.data.releases){
+                    player.releases = saveFile.data.releases;
+                }
+                if(saveFile.data.mp){
+                    player.mp = saveFile.data.mp;
+                }
+                
+                
 
                 updateTs();
                 compressionModule.update();
                 releaseModule.update();
+                heavenModule.update();
             },
             data : {
                 dm : 10,
+                mp : 0,
                 ts : 0,
                 dims : [],
                 dimsBought : [],
@@ -163,11 +194,13 @@
 
             incrementation *= Math.pow(2,Math.floor(player.dimsBought[dim]/10)) //Buy 10 multiplier
 
-            incrementation *= Math.pow(2,player.releases); //Release bonus
+            incrementation *= releaseModule.getPower(); //Release bonus
+
+            incrementation *= heavenModule.getPower();
 
             if(dim == 0){ //Display income/sec
                 if(player.dm != Infinity){
-                    document.getElementById('cashIncome').innerHTML = scientificNote(incrementation);
+                    document.getElementById('cashIncome').innerHTML = scientificNote(incrementation,1);
                 }else{
                     document.getElementById('cashIncome').innerHTML = "Infinite";
     
@@ -264,6 +297,20 @@
                 document.getElementById('releaseBtn').classList.remove("relActive")
             }
 
+            if(player.mp > 0 || player.dm == Infinity){
+                document.getElementById('heavenModule').style.display = "block";
+            }else{
+                document.getElementById('heavenModule').style.display = "none";
+            }
+
+            if(player.dm == Infinity){
+                document.getElementById('heavenBtn').classList.remove("relInactive")
+                document.getElementById('heavenBtn').classList.add("heavenActive")
+            }else{
+                document.getElementById('heavenBtn').classList.add("relInactive")
+                document.getElementById('heavenBtn').classList.remove("heavenActive")
+            }
+
         }
 
         function showBuyable(block){
@@ -325,7 +372,7 @@
                 if(player.mpUpgrades.unlocked[0]){  //mpUgrade[0]
                     ticksMulti += 0.050;
                 }
-            ticksMulti += player.compressions * compressionModule.benefitRatio; //Compression bonus
+            ticksMulti += compressionModule.getPower(); //Compression bonus
                        
             return Math.pow(ticksMulti,player.ts)
         }
@@ -369,11 +416,13 @@
             updateTs();
             compressionModule.update();
             releaseModule.update();
+            heavenModule.update();
         }
 
 
         compressionModule.init();
         releaseModule.init();
+        heavenModule.init();
        
         saveFile.load();
         var interval = 40;

@@ -1,14 +1,14 @@
 //Package Manager
 
-var version = 7;
+var version = 8;
 
 
  //Compression
  importModule("scripts/modules/compression.js?");
  //release
  importModule("scripts/modules/release.js");
- //galaxy
- importModule("scripts/modules/galaxy.js");
+ //heaven (infinity)
+ importModule("scripts/modules/heaven.js");
 
 
 
@@ -16,6 +16,7 @@ var version = 7;
 importModule("scripts/modules/notification.js");
 importModule("scripts/game.js");
 importModule("scripts/modules/debug.js");
+importModule("scripts/modules/tabManager.js");
 
 
 function importModule(url) {

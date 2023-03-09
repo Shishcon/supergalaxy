@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Galaxy</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css?4">
+    <link rel="stylesheet" href="style.css?5">
 </head>
 <body>
     <p>You have <span id="cashCount">10</span> dadidulson's matter</p>
@@ -14,6 +14,12 @@
     <span id="saveBtn" class="btn dimBtn" style="padding: 5px;">
         Save Progress
     </span><br><br>
+    <div id="heavenModule">
+        <div class="compressBtn relInactive" id="heavenBtn">GET OVER HEAVEN<br><span class="compressCost" id="heavenIncome">+1 MP</span></div>
+        Your dims, compressions and releases get a multiplicative 50% boost per every MP<br>
+        (<span id="mpCount" style="color:orange">0 MP</span> = <span id="mpBoost">0</span>x boost</span>)
+        </div>
+        <br>
     <!---<marquee style="background-color: #444;">
     kylefromaccountingdim (24yo) - has an affair with mamidim. Dadidim are angy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     Welcome to the Dadiverse, where everything has a Daddykink&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;           
@@ -152,7 +158,7 @@
             <div class="compressTitle">COMPRESSION</div>
             <div class="compressIcon">⤓</div>
             <div class="compressDesc">Compress your DM to make your tickspeed upgrades stronger <br>
-                (0.020x more per compression).</div>
+                (0.010x more per compression).</div>
             <div class="compressCount">Compressed <span id="compressCount" style="color:lime">0</span> times<br>
                 <span id="compressBoost" style="color:lime">(+0.000x)</span>
             </div>
@@ -177,7 +183,6 @@
 
         </div>
     </div>
-
     
     <div id="mamiBlock" title="This bar shows how much DM you need to generate a Mami Point">
         <span id="mamiBar" class="buy10Bar" style="background-color: orange;"></span>
@@ -227,7 +232,7 @@
     </span>
 </div>
     
-    <script src="scripts/main.js?9"></script>
+    <script src="scripts/main.js?10"></script>
 
 
 </body>
