@@ -6,25 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Galaxy</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css?5">
+    <link rel="stylesheet" href="style.css?11">
 </head>
 <body>
     <p>You have <span id="cashCount">10</span> dadidulson's matter</p>
     <p style="font-size: 14px;">You are getting <span id="cashIncome">10</span> DM/s</p>
     <span id="saveBtn" class="btn dimBtn" style="padding: 5px;">
         Save Progress
-    </span><br><br>
+    </span><br>
+
     <div id="heavenModule">
+        <p>You have <span id="mpCount"style="color:orange;font-size:24px">0</span> MP</p>
         <div class="compressBtn relInactive" id="heavenBtn">GET OVER HEAVEN<br><span class="compressCost" id="heavenIncome">+1 MP</span></div>
-        Your dims, compressions and releases get a multiplicative 50% boost per every MP<br>
-        (<span id="mpCount" style="color:orange">0 MP</span> = <span id="mpBoost">0</span>x boost</span>)
+        Your dims, compressions and releases get a multiplicative 50% boost per every heaven<br>
+        (<span id="heavenCount" style="color:orange">0 MP</span> = <span id="mpBoost">0</span>x boost</span>)
         </div>
         <br>
     <!---<marquee style="background-color: #444;">
     kylefromaccountingdim (24yo) - has an affair with mamidim. Dadidim are angy&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
     Welcome to the Dadiverse, where everything has a Daddykink&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;           
     </marquee>--->
+    <div class="tabs">
+        <div class="tab tabActive" style="border-color: magenta" id="dmTab">DM</div>
+        <div class="tab" style="border-color: orange" id="mpTab">MP</div>
+    </div>
 
+<div id="dmTabContainer">
     <div style="text-align: right; margin:0 auto 5px;">
         <span id="btnMax">Max all</span>
     </div>
@@ -191,40 +198,12 @@
 
     
 
-    <div id="gmModule" style="display: none;">
-        <div id="gmTitle">Galaxy Module</div>
-        <div id="mpCount">You have 0 MP</div>
-        <div id="mpContainer"></div>
-        <div id="containerCapCount" class="mpRepeatableCount">MP Tank Capacity<br>1e3 MP</div>
-        <div id="containerCapUpgrade" class="mpRepeatableUpgrade">1 MP</div>
-        <div id="mpMultiplierCount" class="mpRepeatableCount">MP multiplier<br>x1</div>
-        <div id="mpMultiplierUpgrade" class="mpRepeatableUpgrade">100 MP</div>
-        <div id="galcticBoostCount" class="mpRepeatableCount">Galactic Boost<br>x1</div>
-        <div id="galcticBoostUpgrade" class="mpRepeatableUpgrade">1e200 MP</div>
-        <div id="mpDimUnlock">Unlock MamiDim<br>2e9 MP</div>
-        <div id="mpUpgradeContainer">
-            <div class="mpUpgradeBox">
-                Make your base Tickspeed multiplier stronger (+0.025x)<br>
-                1 MP
-            </div>
-            <div class="mpUpgradeBox">
-                Make your base Tickspeed multiplier stronger (+0.025x)<br>
-                5 MP
-            </div>
-            <div class="mpUpgradeBox">
-                Make your base Tickspeed multiplier stronger (+0.025x)<br>
-                5 MP
-            </div>
-            <div class="mpUpgradeBox">
-                Make your base Tickspeed multiplier stronger (+0.025x)<br>
-                5 MP
-            </div>
-            <div class="mpUpgradeBox">
-                Make your base Tickspeed multiplier stronger (+0.025x)<br>
-                5 MP
-            </div>
+</div>
 
-        </div>
+<div id="mpTabContainer">
+    <p>THERE WILL BE DRAGONS</p>
+    <p>AND mp UPGRADES ;)</p>
+</div>
         
     </div>
     <div style="max-width: 900px; margin: 0 auto;">
@@ -232,7 +211,7 @@
     </span>
 </div>
     
-    <script src="scripts/main.js?10"></script>
+    <script src="scripts/main.js?11"></script>
 
 
 </body>

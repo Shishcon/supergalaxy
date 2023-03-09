@@ -119,6 +119,7 @@
                 saveFile.data.compressions = player.compressions;
                 saveFile.data.releases = player.releases;
                 saveFile.data.mp = player.mp;
+                saveFile.data.mpPrestigeCount = player.mpPrestigeCount;
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
                 showNotification("Game Saved!")
             },
@@ -140,6 +141,7 @@
                 player.compressions = 0;
                 player.releases = 0;
                 player.mp = 0;
+                player.mpPrestigeCount = 0;
 
                 if(saveFile.data.dm){
                     player.dm = saveFile.data.dm;
@@ -162,6 +164,9 @@
                 if(saveFile.data.mp){
                     player.mp = saveFile.data.mp;
                 }
+                if(saveFile.data.mpPrestigeCount){
+                    player.mpPrestigeCount = saveFile.data.mpPrestigeCount;
+                }
                 
                 
 
@@ -178,6 +183,7 @@
                 dimsBought : [],
                 compressions : 0,
                 releases : 0,
+                mpPrestigeCount : 0,
             }
             
         }

@@ -14,7 +14,8 @@ var heavenModule = {
             document.getElementById('heavenIncome').innerHTML = "+"+heavenModule.income+" MP";
         }
 
-        document.getElementById('mpCount').innerHTML = player.mp + " MP";
+        document.getElementById('heavenCount').innerHTML = player.mpPrestigeCount + " Heavens";
+        document.getElementById('mpCount').innerHTML = player.mp;
         if(heavenModule.getPower() >= 1000){
             document.getElementById('mpBoost').innerHTML = scientificNote(heavenModule.getPower());
         }else{
@@ -25,10 +26,11 @@ var heavenModule = {
 
     },
     getPower: () => {
-        return Math.pow(heavenModule.benefitRatio,player.mp);
+        return Math.pow(heavenModule.benefitRatio,player.mpPrestigeCount);
     },
     use : () => {
         if(player.dm == heavenModule.getCost()){
+            player.mpPrestigeCount+=1;
             player.mp+=heavenModule.income;
             player.compressions = 0;
             player.releases = 0;
