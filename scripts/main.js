@@ -1,6 +1,6 @@
 //Package Manager
 
-var version = 9;
+var version = 10;
 
 
  //Compression
@@ -9,6 +9,8 @@ var version = 9;
  importModule("scripts/modules/release.js");
  //heaven (infinity)
  importModule("scripts/modules/heaven.js");
+ //heavenUpgrades
+ importModule("scripts/modules/heavenUpgrades.js");
 
 
 

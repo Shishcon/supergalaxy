@@ -1,4 +1,7 @@
- function scientificNote(liczba, precise){
+
+
+
+function scientificNote(liczba, precise){
            
             if(liczba<1000){
                 if(precise){
@@ -63,12 +66,12 @@
                     document.getElementById('countD'+(dim+1)).innerHTML = "Infinite";
                 }
                 
-                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10))*releaseModule.getPower()*heavenModule.getPower(),1);
+                document.getElementById('multiD'+(dim+1)).innerHTML = "x"+scientificNote(Math.pow(2,Math.floor(player.dimsBought[dim]/10))*releaseModule.getPower()*heavenUpgrades.getUpgrade("ddBoost").getPower()*heavenModule.getPower(),1);
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10BarBought')[0].style.width = (player.dimsBought[dim]%10)*10+'%';
                 document.getElementById('barD'+(dim+1)).getElementsByClassName('buy10Bar')[0].style.width = 
                 Math.min(10,Math.floor(((player.dimsBought[dim]%10))+(player.dm/player.getDimCost(dim))))*10+'%';
             },
-
+            
 
             //DM miniPrestiges
             releases : 0,
@@ -81,25 +84,6 @@
             ////Infinity (Prestige 1)////
             
             mpPrestigeCount : 0,
-
-
-
-
-            //Upgrades 
-            mpUpgrades : {
-
-                unlocked : [false],
-                cost : [1],
-                /*
-                upgrade[0] - base player.tsMulti 0.125 -> 0.150
-                upgrade[1] - Release multiplayer 2x -> 2.2x
-                
-                upgrade[2] - 1st DadiDim production boosted by (1+player.mpPrestigeCount/5)x
-                upgrade[3] - 2nd DadiDim production boosted by (1+player.mpPrestigeCount/5)x
-                upgrade[4] - 3rd DadiDim production boosted by (1+player.mpPrestigeCount/5)x
-                upgrade[5] - 4th DadiDim production boosted by (1+player.mpPrestigeCount/5)x
-                */
-            },
 
 
             //Misc
@@ -120,6 +104,7 @@
                 saveFile.data.releases = player.releases;
                 saveFile.data.mp = player.mp;
                 saveFile.data.mpPrestigeCount = player.mpPrestigeCount;
+                heavenUpgrades.saveUnlocks(saveFile.data.unlockList);
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
                 showNotification("Game Saved!")
             },
@@ -142,6 +127,9 @@
                 player.releases = 0;
                 player.mp = 0;
                 player.mpPrestigeCount = 0;
+                if(saveFile.data.unlockList == undefined){
+                    saveFile.data.unlockList = [];
+                }
 
                 if(saveFile.data.dm){
                     player.dm = saveFile.data.dm;
@@ -167,6 +155,7 @@
                 if(saveFile.data.mpPrestigeCount){
                     player.mpPrestigeCount = saveFile.data.mpPrestigeCount;
                 }
+                heavenUpgrades.loadUnlocks(saveFile.data.unlockList);
                 
                 
 
@@ -174,6 +163,7 @@
                 compressionModule.update();
                 releaseModule.update();
                 heavenModule.update();
+                heavenUpgrades.update();
             },
             data : {
                 dm : 10,
@@ -184,6 +174,7 @@
                 compressions : 0,
                 releases : 0,
                 mpPrestigeCount : 0,
+                unlockList : [],
             }
             
         }
@@ -201,6 +192,8 @@
             incrementation *= Math.pow(2,Math.floor(player.dimsBought[dim]/10)) //Buy 10 multiplier
 
             incrementation *= releaseModule.getPower(); //Release bonus
+
+            incrementation *= heavenUpgrades.getUpgrade("ddBoost").getPower(); //10% boost
 
             incrementation *= heavenModule.getPower();
 
@@ -303,7 +296,7 @@
                 document.getElementById('releaseBtn').classList.remove("relActive")
             }
 
-            if(player.mp > 0 || player.dm == Infinity){
+            if(player.mpPrestigeCount > 0 || player.dm == Infinity){
                 document.getElementById('heavenModule').style.display = "block";
             }else{
                 document.getElementById('heavenModule').style.display = "none";
@@ -371,13 +364,10 @@
         //TS upgrades
         document.getElementById('buyTs').onclick = function(){buyTs()};
         document.getElementById('barTs').onclick = function(){buyTs(true)};
-        updateTs();
+        
         
         function calculateTs(){
             let ticksMulti = player.tsMulti+1;
-                if(player.mpUpgrades.unlocked[0]){  //mpUgrade[0]
-                    ticksMulti += 0.050;
-                }
             ticksMulti += compressionModule.getPower(); //Compression bonus
                        
             return Math.pow(ticksMulti,player.ts)
@@ -423,12 +413,17 @@
             compressionModule.update();
             releaseModule.update();
             heavenModule.update();
+            heavenUpgrades.update();
         }
 
-
+        
+        heavenModule.init();
+        heavenUpgrades.init();
         compressionModule.init();
         releaseModule.init();
-        heavenModule.init();
+        
+        updateTs();
+        
        
         saveFile.load();
         var interval = 40;

@@ -1,10 +1,11 @@
 var releaseModule = {
-    baseCost : 30,
-    costIncrement : 20,
+    baseCost : 15,
+    costIncrement : 5,
     benefitRatio : 2,
 
     getCost : () => {
-        return Math.pow(10,releaseModule.baseCost) * Math.pow(10, player.releases*releaseModule.costIncrement);
+        return Math.pow(10,releaseModule.baseCost) * Math.pow(10, ((player.releases*player.releases+player.releases)/2)*releaseModule.costIncrement);
+        
     },
     update : () => {   
         if(releaseModule.getCost() != Infinity){
@@ -28,7 +29,7 @@ var releaseModule = {
         if(player.releases == 0){
             return 1;
         }
-        return Math.pow(releaseModule.benefitRatio,player.releases)*heavenModule.getPower();
+        return Math.pow(releaseModule.benefitRatio,player.releases)*heavenUpgrades.getUpgrade("relBoost").getPower();
     },
     init : () => {
         document.getElementById('releaseBtn').onclick = function(){releaseModule.use();};

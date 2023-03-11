@@ -374,3 +374,35 @@
     background-color: white;
     color: black;
 }
+
+.upgrade{
+    border-color: orange;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 5px 0;
+    transition-duration: 0.2s;
+    background-color: #111;
+}
+
+.upgrade span{
+    line-height: 25px;
+    font-size: 16px;
+    color:white !important;
+}
+#upgradeTab{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.upgUnlocked{
+    background-color: orange;
+    color:black;
+}
+.upgUnavailable{
+    background-color: #777;
+    border-color: #777;
+    color: black;
+}

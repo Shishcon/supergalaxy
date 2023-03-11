@@ -13,20 +13,20 @@ var heavenModule = {
         }else{
             document.getElementById('heavenIncome').innerHTML = "+"+heavenModule.income+" MP";
         }
-
-        document.getElementById('heavenCount').innerHTML = player.mpPrestigeCount + " Heavens";
         document.getElementById('mpCount').innerHTML = player.mp;
-        if(heavenModule.getPower() >= 1000){
+        /*//document.getElementById('heavenCount').innerHTML = player.mpPrestigeCount + " Heavens";
+        
+        //if(heavenModule.getPower() >= 1000){
             document.getElementById('mpBoost').innerHTML = scientificNote(heavenModule.getPower());
         }else{
             document.getElementById('mpBoost').innerHTML = heavenModule.getPower().toFixed(2);
 
-        }
+        }*/
         
 
     },
     getPower: () => {
-        return Math.pow(heavenModule.benefitRatio,player.mpPrestigeCount);
+        return Math.pow(heavenModule.benefitRatio,0);
     },
     use : () => {
         if(player.dm == heavenModule.getCost()){

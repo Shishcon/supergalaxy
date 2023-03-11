@@ -1,5 +1,5 @@
         var compressionModule = {
-            baseCost : 15,
+            baseCost : 20,
             costIncrement : 15,
             benefitRatio : 0.01,
         
@@ -24,7 +24,7 @@
                 }
             },
             getPower : () => {
-                return (player.compressions * compressionModule.benefitRatio) * heavenModule.getPower();
+                return (player.compressions * compressionModule.benefitRatio) * heavenUpgrades.getUpgrade("compBoost").getPower();
             },
             init : () => {
                 document.getElementById('compressBtn').onclick = function(){compressionModule.use();};

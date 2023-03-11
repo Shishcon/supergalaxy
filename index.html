@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Galaxy</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css?11">
+    <link rel="stylesheet" href="style.css?12">
 </head>
 <body>
     <p>You have <span id="cashCount">10</span> dadidulson's matter</p>
@@ -14,12 +14,12 @@
     <span id="saveBtn" class="btn dimBtn" style="padding: 5px;">
         Save Progress
     </span><br>
-
+    
     <div id="heavenModule">
         <p>You have <span id="mpCount"style="color:orange;font-size:24px">0</span> MP</p>
-        <div class="compressBtn relInactive" id="heavenBtn">GET OVER HEAVEN<br><span class="compressCost" id="heavenIncome">+1 MP</span></div>
+        <div class="compressBtn relInactive" id="heavenBtn">GET OVER HEAVEN<br><span class="compressCost" id="heavenIncome">+1 MP</span></div><!---
         Your dims, compressions and releases get a multiplicative 50% boost per every heaven<br>
-        (<span id="heavenCount" style="color:orange">0 MP</span> = <span id="mpBoost">0</span>x boost</span>)
+        (<span id="heavenCount" style="color:orange">0 MP</span> = <span id="mpBoost">0</span>x boost</span>)--->
         </div>
         <br>
     <!---<marquee style="background-color: #444;">
@@ -29,6 +29,8 @@
     <div class="tabs">
         <div class="tab tabActive" style="border-color: magenta" id="dmTab">DM</div>
         <div class="tab" style="border-color: orange" id="mpTab">MP</div>
+        <!---<div class="tab" style="border-color: cyan" id="mpTab">Au</div>
+        <div class="tab" style="border-color: white" id="mpTab">St</div>--->
     </div>
 
 <div id="dmTabContainer">
@@ -200,9 +202,13 @@
 
 </div>
 
-<div id="mpTabContainer">
-    <p>THERE WILL BE DRAGONS</p>
-    <p>AND mp UPGRADES ;)</p>
+<div id="mpTabContainer" style="display: none;">
+    <div id="upgradeTab">
+       
+        
+    </div>
+
+    
 </div>
         
     </div>
@@ -211,7 +217,7 @@
     </span>
 </div>
     
-    <script src="scripts/main.js?11"></script>
+    <script src="scripts/main.js?12"></script>
 
 
 </body>
