@@ -371,8 +371,8 @@
     width: 80px;
     height: 30px;
     line-height: 30px;
-    background-color: white;
-    color: black;
+    background-color: #111;
+    color: white;
 }
 
 .upgrade{
@@ -405,4 +405,11 @@
     background-color: #777;
     border-color: #777;
     color: black;
+}
+.upgText{
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
 }

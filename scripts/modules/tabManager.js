@@ -5,7 +5,7 @@ var actualTab = 0;
 0 - DM
 1 - MP
 */
-var tabList = ["dmTab","mpTab"];
+var tabList = ["dmTab","mpTab","autoTab","achivTab"];
 
 function changeTab(t){
     document.getElementById(tabList[actualTab]+"Container").style.display = "none";
@@ -17,3 +17,5 @@ function changeTab(t){
 
 document.getElementById(tabList[0]).onclick = function(){changeTab(0)};
 document.getElementById(tabList[1]).onclick = function(){changeTab(1)};
+document.getElementById(tabList[2]).onclick = function(){changeTab(2)};
+document.getElementById(tabList[3]).onclick = function(){changeTab(3)};

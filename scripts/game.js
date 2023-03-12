@@ -406,6 +406,9 @@ function scientificNote(liczba, precise){
 
         function prestige(){
             player.dm = 10;
+            if(heavenUpgrades.getUpgrade("startBoost1").unlocked){
+                player.dm = Math.pow(10,heavenUpgrades.getUpgrade("startBoost1").benefit);
+            }
             player.dims = [0,0,0,0,0,0,0,0];
             player.dimsBought = [0,0,0,0,0,0,0,0];
             player.ts = 0;

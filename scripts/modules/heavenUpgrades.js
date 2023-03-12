@@ -8,7 +8,14 @@ var heavenUpgrades = {
         heavenUpgrades.upgradeList.push(new hUpgrade("ddBoost", "Gain a boost to your DadiDims per every heaven",1,0,1.1,"multiplier",player,"mpPrestigeCount"));
         heavenUpgrades.upgradeList.push(new hUpgrade("compBoost", "Gain a boost to your compressions per every heaven",1,0,1.05,"multiplier",player,"mpPrestigeCount"));
         heavenUpgrades.upgradeList.push(new hUpgrade("relBoost", "Gain a boost to your releases per every heaven",1,0,1.1,"multiplier",player,"mpPrestigeCount"));
-
+        heavenUpgrades.upgradeList.push(new hUpgrade("startBoost1", "Always start with 1.00e5 DM after each compression, release and heaven",5,0,5,"unlock",player,"dm"));
+        /*
+        heavenUpgrades.upgradeList.push(new hUpgrade("dimAu", "Unlock DadiDim automator, so you won't have to buy dimensions manually",5,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("compAu", "Unlock compression automator, so you won't have to compress manually",10,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("relAu", "Unlock release automator, so you won't have to release manually",15,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("heavAu", "Unlock heaven automator, so you won't have to get over heaven manually",25,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("achivBoost", "Gain a boost to your DadiDims based on how many achievement you have unlocked.",20,0,1.5,"multiplier",player,"dm"));
+        */
 
         heavenUpgrades.upgradeList.forEach(element => {
             element.printElement();
@@ -17,7 +24,6 @@ var heavenUpgrades = {
     update: () => {
         heavenUpgrades.upgradeList.forEach(element => {
             element.checkAvailability();
-            console.log(element)
         });
     },
 
@@ -66,12 +72,16 @@ class hUpgrade {
 
     }
     updateDesc(){
-        if(this.type = "multiplier"){
-            this.element.innerHTML = this.desc+"<br>Multiplier: "+this.benefit+"x<br>(currently: "+scientificNote(this.getPower(),2)+"x)<br><span class=\"compressCost\">"+scientificNote(this.getCost(),2)+" MP</span>";
-        }else if(this.type = "unlock"){
-            this.element.innerHTML = this.desc+"<br><span class=\"compressCost\">"+scientificNote(this.getCost(),2)+" MP</span>";
+        let descContent = "";
+        descContent = '<div class="upgText">';
+        if(this.type == "multiplier"){
+            descContent += this.desc+"<br>Multiplier: "+this.benefit+"x<br>(currently: "+scientificNote(this.getPower(),2)+"x)";
+        }else if(this.type == "unlock"){
+            descContent += this.desc+"<br>";
         }
-    }
+        descContent += "</div><br><span class=\"compressCost\">"+scientificNote(this.getCost(),0)+" MP</span";
+        this.element.innerHTML = descContent;
+        }
 
     getCost(){
         return this.costBase*Math.pow(10,this.costExp);

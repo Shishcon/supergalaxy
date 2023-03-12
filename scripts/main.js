@@ -1,6 +1,6 @@
 //Package Manager
 
-var version = 10;
+var version = 11;
 
 
  //Compression
@@ -21,7 +21,7 @@ importModule("scripts/modules/debug.js");
 importModule("scripts/modules/tabManager.js");
 
 
-function importModule(url) {
+async function importModule(url) {
     var script = document.createElement("script");
     script.src = url+"?"+version;
     document.head.appendChild(script);
