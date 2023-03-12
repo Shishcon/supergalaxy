@@ -20,7 +20,6 @@ var releaseModule = {
     use : () => {
         if(player.dm >= releaseModule.getCost() && releaseModule.getCost() != Infinity){
             player.releases++;
-            player.compressions = 0;
             prestige();
             
         }
