@@ -6,7 +6,7 @@ add <currency> <amount> <times of ten>
 
 force <behaviour> <times>
 #used to force prestige behaviours#
-        behaviours: compression, release
+        behaviours: compression, release, heaven
         example: force compression 2 //forces compression 2 times
 
 sf reset

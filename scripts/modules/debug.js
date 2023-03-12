@@ -43,6 +43,16 @@ function getDebugCommand(){
                 showNotification("forced release "+Number(command[2])+" times")
             }
         }
+        else if(command[1] == "heaven"){
+            if(Number(command[2]) > 0){
+                for(i=0;i<Number(command[2]);i++){
+                    player.dm = heavenModule.getCost();
+                    heavenModule.use();
+                   
+                }
+                showNotification("forced heaven "+Number(command[2])+" times")
+            }
+        }
     }
     else if(command[0] == "help"){
         window.open("debuggerHelp.txt", '_blank').focus();
