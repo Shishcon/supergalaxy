@@ -21,8 +21,9 @@ var releaseModule = {
         if(player.dm >= releaseModule.getCost() && releaseModule.getCost() != Infinity){
             player.releases++;
             prestige();
-            
+            return true;
         }
+        return false;
     },
     getPower : () =>{
         if(player.releases == 0){

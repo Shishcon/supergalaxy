@@ -21,7 +21,9 @@
                 if(player.dm >= compressionModule.getCost() && compressionModule.getCost() != Infinity){
                     player.compressions++;
                     prestige();
+                    return true;
                 }
+                return false;
             },
             getPower : () => {
                 return (player.compressions * compressionModule.benefitRatio) * heavenUpgrades.getUpgrade("compBoost").getPower();

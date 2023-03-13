@@ -35,7 +35,9 @@ var heavenModule = {
             player.compressions = 0;
             player.releases = 0;
             prestige();
+            return true;
         }
+        return false;
     },
     init : () => {
         document.getElementById('heavenBtn').onclick = function(){heavenModule.use();};

@@ -1,6 +1,6 @@
 //Package Manager
 
-var version = 13;
+var version = 14;
 
 
  //Compression
@@ -11,7 +11,8 @@ var version = 13;
  importModule("scripts/modules/heaven.js");
  //heavenUpgrades
  importModule("scripts/modules/heavenUpgrades.js");
-
+ //automator
+ importModule("scripts/modules/automator.js");
 
 
 

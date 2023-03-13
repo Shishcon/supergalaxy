@@ -352,7 +352,8 @@
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
-
+    align-items: center;
+    height: 45px;
 }
 
 .tab{
@@ -363,14 +364,14 @@
     border-radius: 5px;
     border: 1px red solid;
     margin: 0 3px 0 0;
-    transition: width 0.2s;
+    transition: width 0.2s,height 0.2s,line-height 0.2s;
     cursor: pointer;
 }
 
 .tabActive{
     width: 80px;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     background-color: #111;
     color: white;
 }
@@ -412,4 +413,61 @@
     justify-content: center;
     align-content: center;
     flex-direction: column;
+}
+
+#automatorTab{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 800px;
+    margin: 0 auto;
+
+}
+
+.automator{
+    width: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid cyan;
+}
+
+.automatorBtn{
+    width: 120px;
+    border-color: cyan;
+    background-color: cyan;
+    color: black;
+    margin: 2px;
+
+}
+
+.automatorBtn span{
+    color:white;
+}
+
+.autoTitle{
+    width: 100px;
+}
+.autoDelay{
+    width: 50px;
+}
+.autoEnabled{
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    border: 1px cyan solid;
+    background-color: cyan;
+    color: black;
+    line-height: 30px;
+    cursor: pointer;
+
+}
+.autoUnavailable{
+    background-color: #777;
+    border-color: #777;
+    color: black;
 }

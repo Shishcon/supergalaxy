@@ -105,6 +105,7 @@ function scientificNote(liczba, precise){
                 saveFile.data.mp = player.mp;
                 saveFile.data.mpPrestigeCount = player.mpPrestigeCount;
                 heavenUpgrades.saveUnlocks(saveFile.data.unlockList);
+                automatorModule.saveUnlocks(saveFile.data.automatorList);
                 window.localStorage.setItem("saveData",JSON.stringify(saveFile.data));
                 showNotification("Game Saved!")
             },
@@ -129,6 +130,9 @@ function scientificNote(liczba, precise){
                 player.mpPrestigeCount = 0;
                 if(saveFile.data.unlockList == undefined){
                     saveFile.data.unlockList = [];
+                }
+                if(saveFile.data.automatorList == undefined){
+                    saveFile.data.automatorList = [];
                 }
 
                 if(saveFile.data.dm){
@@ -157,6 +161,9 @@ function scientificNote(liczba, precise){
                 }
                 heavenUpgrades.loadUnlocks(saveFile.data.unlockList);
                 
+                automatorModule.loadUnlocks(saveFile.data.automatorList);
+                automatorModule.checkUnlocks();
+                
                 
 
                 updateTs();
@@ -164,6 +171,7 @@ function scientificNote(liczba, precise){
                 releaseModule.update();
                 heavenModule.update();
                 heavenUpgrades.update();
+                automatorModule.update();
             },
             data : {
                 dm : 10,
@@ -175,6 +183,7 @@ function scientificNote(liczba, precise){
                 releases : 0,
                 mpPrestigeCount : 0,
                 unlockList : [],
+                automatorList : [],
             }
             
         }
@@ -232,7 +241,7 @@ function scientificNote(liczba, precise){
             buyAll();
             checkAvilability();
             checkMamiPercentage();
-
+            automatorModule.use();
             
             player.actualTime = Date.now();
         }
@@ -321,15 +330,18 @@ function scientificNote(liczba, precise){
         }
 
         function buyAll(){
-            if(!ifBuyAll){
-                return;
+            if(ifBuyAll || ifHolding){
+               
+                buyTs(true);
+                for(i=player.dims.length-1;i>=0;i--){
+                    player.bulkBuyDim(i);
+
+                }
+                ifBuyAll = false;
+                return true;
+            }else{
+                return false;
             }
-            buyTs(true);
-            for(i=player.dims.length-1;i>=0;i--){
-                player.bulkBuyDim(i);
-                
-            }
-            
         }
 
         for(i=0;i<player.dims.length;i++){
@@ -355,10 +367,10 @@ function scientificNote(liczba, precise){
         document.getElementById('barD7').onclick = function(){player.bulkBuyDim(6)};
         document.getElementById('barD8').onclick = function(){player.bulkBuyDim(7)};
 
-        var ifBuyAll = false;
-        document.getElementById('btnMax').onpointerdown = function(){ifBuyAll = true;};
+        var ifBuyAll = false,ifHolding = false;
+        document.getElementById('btnMax').onpointerdown = function(){ifHolding = true;};
         //document.getElementById('btnMax').ontouchstart = function(e){ifBuyAll = true;e.preventDefault()};
-        document.getElementById('btnMax').onpointerup = function(){ifBuyAll = false;};
+        document.getElementById('btnMax').onpointerup = function(){ifHolding = false;};
         //document.getElementById('btnMax').ontouchend = function(e){ifBuyAll = false;e.preventDefault()};
 
         //TS upgrades
@@ -417,6 +429,7 @@ function scientificNote(liczba, precise){
             releaseModule.update();
             heavenModule.update();
             heavenUpgrades.update();
+            automatorModule.update();
         }
 
         
@@ -424,6 +437,7 @@ function scientificNote(liczba, precise){
         heavenUpgrades.init();
         compressionModule.init();
         releaseModule.init();
+        automatorModule.init();
         
         updateTs();
         

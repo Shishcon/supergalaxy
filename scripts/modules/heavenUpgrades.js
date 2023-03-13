@@ -9,11 +9,12 @@ var heavenUpgrades = {
         heavenUpgrades.upgradeList.push(new hUpgrade("compBoost", "Gain a boost to your compressions per every heaven",1,0,1.05,"multiplier",player,"mpPrestigeCount"));
         heavenUpgrades.upgradeList.push(new hUpgrade("relBoost", "Gain a boost to your releases per every heaven",1,0,1.1,"multiplier",player,"mpPrestigeCount"));
         heavenUpgrades.upgradeList.push(new hUpgrade("startBoost1", "Always start with 1.00e5 DM after each compression, release and heaven",5,0,5,"unlock",player,"dm"));
-        /*
+        
         heavenUpgrades.upgradeList.push(new hUpgrade("dimAu", "Unlock DadiDim automator, so you won't have to buy dimensions manually",5,0,1.1,"unlock",player,"dm"));
-        heavenUpgrades.upgradeList.push(new hUpgrade("compAu", "Unlock compression automator, so you won't have to compress manually",10,0,1.1,"unlock",player,"dm"));
-        heavenUpgrades.upgradeList.push(new hUpgrade("relAu", "Unlock release automator, so you won't have to release manually",15,0,1.1,"unlock",player,"dm"));
-        heavenUpgrades.upgradeList.push(new hUpgrade("heavAu", "Unlock heaven automator, so you won't have to get over heaven manually",25,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("relAu", "Unlock release automator, so you won't have to release manually",10,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("compAu", "Unlock compression automator, so you won't have to compress manually",15,0,1.1,"unlock",player,"dm"));
+        heavenUpgrades.upgradeList.push(new hUpgrade("heavAu", "Unlock heaven automator, so you won't have to get over heaven manually",30,0,1.1,"unlock",player,"dm"));
+        /*
         heavenUpgrades.upgradeList.push(new hUpgrade("achivBoost", "Gain a boost to your DadiDims based on how many achievement you have unlocked.",20,0,1.5,"multiplier",player,"dm"));
         */
 
@@ -88,12 +89,13 @@ class hUpgrade {
     }
 
     buy(){
-        if(player.mp >= this.getCost()){
+        if(player.mp >= this.getCost() && !this.unlocked){
             player.mp -= this.getCost();
             this.unlocked = true;
             this.checkAvailability();
             heavenModule.update();
             heavenUpgrades.update();
+            automatorModule.checkUnlocks();
         }
     }
     getPower(){
